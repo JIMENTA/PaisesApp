@@ -16,7 +16,7 @@
         <tr *ngFor="let pais of paises; let i = index">
             <td>{{ i + 1}}</td>
             <td>
-                <img class="small-flag" [src]="pais.flag">
+                <img class="small-flag" [src]="pais.flag" >
             </td>
             <td>{{ pais.capital }} , {{ pais.name }}</td>
             <td>{{ pais.population | number}}</td>

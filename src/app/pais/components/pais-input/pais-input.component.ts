@@ -11,7 +11,7 @@ import { debounceTime} from 'rxjs/operators';
 })
 export class PaisInputComponent implements OnInit {
 
-
+  @Input() public initialValue: string = '';
   @Output() onEnter: EventEmitter<string> = new EventEmitter();
   @Output()  onDebounce: EventEmitter<string> = new EventEmitter();
 

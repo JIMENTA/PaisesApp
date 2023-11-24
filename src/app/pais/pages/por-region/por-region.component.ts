@@ -1,50 +1,47 @@
 import { Component } from '@angular/core';
 import { Country } from '../../interfaces/pais.interface';
 import { PaisService } from '../../services/pais.service';
+import { Region } from '../../interfaces/region.type';
+
 
 @Component({
   selector: 'app-por-region',
   templateUrl: './por-region.component.html',
   styles: [`
   button {
-    margin:5px;
-    
+    margin:5px;  
   }`
   ]
 })
 export class PorRegionComponent  {
-  regiones : string [] = [ 
-  'EU',
-  'EFTA', 
-  'CARICOM', 
-  'PA', 
-  'AU',
-  'USAN',
-  'EEU',
-  'AL', 
-  'ASEAN',
-  'CAIS',
-  'CEFTA',
-  'NAFTA',
-  'SAARC' ];
+  public countries : Country[] = [];
+
+  public regiones : Region [] = [ 
+  'Africa',
+  'Americas', 
+  'Asia', 
+  'Europe', 
+  'Oceania'
+   ];
  
-  regionActiva : string = '';
-  paises : Country[] = [];
+  public regionActiva : string = '';
+  public selectedRegion? : Region
 
   constructor(private paisService : PaisService) { }
+
 
   getClaseCSS(region:string){
     return (region === this.regionActiva) ? 'btn btn-primary' :  'btn btn-outline-primary';
   }
   
-  activarRegion(region:string){
+  activarRegion(region: Region){
 
     if( region === this.regionActiva ) {return};
 
     this.regionActiva = region;
-    this.paises =[];
+    this.countries =[];
 
-    this.paisService.buscarPorRegion(region).subscribe(paises => this.paises = paises)
+    this.paisService.buscarPorRegion(region).subscribe(paises => this.countries = paises)
 
   }
 

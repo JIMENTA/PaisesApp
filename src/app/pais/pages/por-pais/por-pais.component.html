@@ -2,7 +2,8 @@
 <hr>
 <div class="row">
     <div class="col">
-        <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Buscar por pais..."></app-pais-input>
+        <app-pais-input (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" [initialValue] = "initialValue"
+        placeholder="Buscar por pais..."></app-pais-input>
     </div>
 </div>
 
@@ -24,8 +25,8 @@
 <div *ngIf="errorEncontrado" class="alert alert-danger">
     No se ha encontrado {{termino}}
 </div>
-<div *ngIf="paises.length > 0" class="row">
+<div *ngIf="countries.length > 0" class="row">
     <div class="col">
-        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+        <app-pais-tabla [paises]="countries"></app-pais-tabla>
     </div>
 </div>
